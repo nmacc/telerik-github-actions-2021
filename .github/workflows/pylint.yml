@@ -15,9 +15,6 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v2
     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-  lint:
-    runs-on: ubuntu-latest
-    steps:
     - run: echo "🖥️ The workflow is now ready to test your code on the runner."
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -29,7 +26,8 @@ jobs:
         pip install pylint
     - name: Lint with pylint
       run: |
-        python lint_test.py
+        python lint_test.py &
+        python lint_test.py &
     - name: Build Container Image
       run: |
         echo "Building a container image..."
