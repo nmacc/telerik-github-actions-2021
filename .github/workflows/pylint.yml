@@ -1,9 +1,10 @@
 name: Telerik-Github-Actions-Practice
-on: [pull_request]
+on: 
+  pull_request:
 #   branches: [ adding-actions ]
-#    paths:
-#    - 'factorial.py'
-#    - 'lint_test.py'
+    paths:
+    - 'factorial.py'
+    - 'lint_test.py'
 jobs:
   build:
     runs-on: ubuntu-latest
