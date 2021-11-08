@@ -44,10 +44,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
   build:
-    needs: [lint,style] 
+    needs: [style,lint]
     runs-on: ubuntu-latest
     steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: Build container
+      run: |
+        echo "Building container iamge"
+        ls -la
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: factorial.py
+        path: factorial.py
