@@ -75,3 +75,9 @@ jobs:
     - name: Unit testing
       run: |
         python3 -m doctest factorial.py
+  deploy:
+    needs: unit-test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      run: echo "Deploying to cluster"
