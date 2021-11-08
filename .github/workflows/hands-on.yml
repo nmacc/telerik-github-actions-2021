@@ -43,3 +43,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
+  build:
+    needs: [lint,style] 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
