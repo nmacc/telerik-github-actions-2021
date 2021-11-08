@@ -80,7 +80,7 @@ jobs:
       run: |
         python3 -m doctest factorial.py
   database-integration:
-    needs: build
+    needs: unit-test
     runs-on: ubuntu-latest
     container: node:10.18-jessie
     services:
@@ -107,7 +107,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   deploy:
-    needs: SAST
+    needs: [SAST, database-integration]
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
